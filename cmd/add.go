@@ -2,6 +2,7 @@ package cmd
 
 import (
 	"fmt"
+	"os"
 
 	"github.com/fsnotify/fsnotify"
 	"github.com/spf13/cobra"
@@ -19,6 +20,9 @@ var addCmd = &cobra.Command{
 
 		if args == nil && args[0] == "" && args[1] == "" {
 			fmt.Println("Erreur sur la commande")
+		} else if args[0] != "" && args[1] == "." {
+			project.name = args[0]
+			addProjectActually(&project)
 		} else {
 			project.name = args[0]
 			project.path = args[1]
@@ -31,6 +35,15 @@ var addCmd = &cobra.Command{
 //une struct ayant les champs necessaire pour enregistrer un projet
 type Project struct {
 	name, path string
+}
+
+func addProjectActually(project *Project) {
+	dir, err := os.Getwd()
+	if err != nil {
+		fmt.Println(err)
+	}
+	project.path = dir
+	addProject(project)
 }
 
 //Create function pour rechercher le fichier json et enregistrer le projet
