@@ -9,13 +9,13 @@ import (
 	"github.com/spf13/viper"
 )
 
-//addcmd
+//addcmd permet d'ajouter des projets dans l'appli
 var addCmd = &cobra.Command{
 	Use:   "add",
 	Short: "this command allows you to add a new project and its path",
 	Long:  `this command allows you to add a new project and its path`,
 	Run: func(cmd *cobra.Command, args []string) {
-		//init struct project
+		//init struct projecto
 		var project Project
 
 		if args == nil && args[0] == "" && args[1] == "" {
@@ -59,7 +59,6 @@ func addProject(project *Project) {
 	}
 
 	vp.Set(project.name, project.path)
-
 	vp.WriteConfig()
 
 	vp.OnConfigChange(func(in fsnotify.Event) {
@@ -67,7 +66,6 @@ func addProject(project *Project) {
 	})
 
 	vp.WatchConfig()
-
 }
 
 func init() {
