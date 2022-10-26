@@ -2,6 +2,7 @@ package cmd
 
 import (
 	"fmt"
+	"log"
 	"os"
 
 	"github.com/fsnotify/fsnotify"
@@ -9,17 +10,19 @@ import (
 	"github.com/spf13/viper"
 )
 
-//addcmd permet d'ajouter des projets dans l'appli
+//add allows to add projects in the name and path of a project in the path.json file
 var addCmd = &cobra.Command{
 	Use:   "add",
-	Short: "this command allows you to add a new project and its path",
-	Long:  `this command allows you to add a new project and its path`,
+	Short: "This command allows you to add a new project and its path",
+	Long: `This command allows you to add a new project and its path
+			example: gproject add name_project path_project
+			or to add a project with the current path: gproject add .`,
 	Run: func(cmd *cobra.Command, args []string) {
 		//init struct projecto
 		var project Project
 
-		if args == nil && args[0] == "" && args[1] == "" {
-			fmt.Println("Erreur sur la commande")
+		if args == nil && args[0] == "" && args[1] == "" || len(args) > 2 {
+			log.Fatal("Command error")
 		} else if args[0] != "" && args[1] == "." {
 			project.name = args[0]
 			addProjectActually(&project)
@@ -28,15 +31,15 @@ var addCmd = &cobra.Command{
 			project.path = args[1]
 			addProject(&project)
 		}
-
 	},
 }
 
-//une struct ayant les champs necessaire pour enregistrer un projet
+// a structure with the necessary fields to find a project
 type Project struct {
 	name, path string
 }
 
+//a function retrieves the current directory of the project
 func addProjectActually(project *Project) {
 	dir, err := os.Getwd()
 	if err != nil {
@@ -46,11 +49,10 @@ func addProjectActually(project *Project) {
 	addProject(project)
 }
 
-//Create function pour rechercher le fichier json et enregistrer le projet
+//the add Project function allows you to search the json file and save the data concerning the project (name and path)
 func addProject(project *Project) {
-	//Tout d'abord on retroubve le fichier de configuration des projets
 	vp := viper.New()
-	vp.SetConfigName("project")
+	vp.SetConfigName("path")
 	vp.SetConfigType("json")
 	vp.AddConfigPath(".")
 	err := vp.ReadInConfig()
@@ -70,5 +72,4 @@ func addProject(project *Project) {
 
 func init() {
 	rootCmd.AddCommand(addCmd)
-
 }

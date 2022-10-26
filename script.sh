@@ -1,2 +1,2 @@
-cd C:\Users\MOHAM
+cd C:\Users\MOHAM\Desktop\project\goproject
  bash 

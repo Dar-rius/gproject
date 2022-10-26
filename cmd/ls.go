@@ -8,13 +8,14 @@ import (
 	"github.com/spf13/viper"
 )
 
-// lsCmd permet de lsiter tous les projets contenus dans l'appli
+// ls allows you to list all the projects saved in the path.json file
 var lsCmd = &cobra.Command{
 	Use:   "ls",
-	Short: "",
-	Long:  ``,
+	Short: "This command will list all the projects saved in the path.json file",
+	Long: `This command will list all the project saved in the path.json file
+			example: gproject ls`,
 	Run: func(cmd *cobra.Command, args []string) {
-		viper.SetConfigName("project")
+		viper.SetConfigName("path")
 		viper.SetConfigType("json")
 		viper.AddConfigPath(".")
 		if err := viper.ReadInConfig(); err != nil {
