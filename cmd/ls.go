@@ -16,6 +16,7 @@ var lsCmd = &cobra.Command{
 			example: gproject ls`,
 	Run: func(cmd *cobra.Command, args []string) {
 		viper.SetConfigName("path")
+		viper.AutomaticEnv()
 		viper.SetConfigType("json")
 		viper.AddConfigPath(".")
 		if err := viper.ReadInConfig(); err != nil {
