@@ -30,7 +30,7 @@ var goCmd = &cobra.Command{
 func goPath(project *string) {
 	viper.SetConfigName("path")
 	viper.SetConfigType("json")
-	viper.AddConfigPath(".")
+	viper.AddConfigPath(`C:\Users\MOHAM\GoProject\`)
 
 	err := viper.ReadInConfig()
 	if err != nil {
@@ -51,7 +51,7 @@ func goPath(project *string) {
 	writeBash(&dir)
 
 	//We execute the script contained in the file: script.sh
-	if err := exec.Command("cmd", "C:/", "start", "C:/Programs/goproject/script.sh").Run(); err != nil {
+	if err := exec.Command("cmd", "/C", "start", "C:\\Users\\MOHAM\\GoProject\\script.sh").Run(); err != nil {
 		log.Fatal(err)
 	}
 }
@@ -61,7 +61,7 @@ func writeBash(dir *string) {
 	//the command
 	command := "cd " + *dir + "\n bash \n"
 	data := []byte(command)
-	err := ioutil.WriteFile("./script.sh", data, 0666)
+	err := ioutil.WriteFile("C:\\Users\\MOHAM\\GoProject\\script.sh", data, 0666)
 	if err != nil {
 		log.Fatal(err)
 	}

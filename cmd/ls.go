@@ -1,11 +1,11 @@
 package cmd
 
 import (
+	"encoding/json"
 	"fmt"
-	"log"
+	"os"
 
 	"github.com/spf13/cobra"
-	"github.com/spf13/viper"
 )
 
 // ls allows you to list all the projects saved in the path.json file
@@ -15,16 +15,19 @@ var lsCmd = &cobra.Command{
 	Long: `This command will list all the project saved in the path.json file
 			example: gproject ls`,
 	Run: func(cmd *cobra.Command, args []string) {
-		viper.SetConfigName("path")
-		viper.AutomaticEnv()
-		viper.SetConfigType("json")
-		viper.AddConfigPath(".")
-		if err := viper.ReadInConfig(); err != nil {
-			log.Fatal(err)
+		file, err := os.ReadFile(`C:\Users\MOHAM\GoProject\path.json`)
+		if err != nil {
+			panic(err)
 		}
-		for _, v := range viper.AllKeys() {
-			fmt.Println(v)
+		var data map[string]interface{}
+		err = json.Unmarshal(file, &data)
+		if err != nil {
+			panic(err)
 		}
+		for k, _ := range data {
+			fmt.Println(k)
+		}
+
 	},
 }
 
