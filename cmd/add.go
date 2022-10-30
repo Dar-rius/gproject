@@ -54,7 +54,7 @@ func addProject(project *Project) {
 	vp := viper.New()
 	vp.SetConfigName("path")
 	vp.SetConfigType("json")
-	vp.AddConfigPath(`C:\Users\MOHAM\GoProject\`)
+	vp.AddConfigPath(`c:\program files\goproject\`)
 	err := vp.ReadInConfig()
 	if err != nil {
 		fmt.Println(err)

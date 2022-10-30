@@ -15,7 +15,7 @@ var lsCmd = &cobra.Command{
 	Long: `This command will list all the project saved in the path.json file
 			example: gproject ls`,
 	Run: func(cmd *cobra.Command, args []string) {
-		file, err := os.ReadFile(`C:\Users\MOHAM\GoProject\path.json`)
+		file, err := os.ReadFile(`C:\Program Files\GoProject\path.json`)
 		if err != nil {
 			panic(err)
 		}
