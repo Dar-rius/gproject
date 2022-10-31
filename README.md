@@ -30,4 +30,9 @@ $ gproject go name_project
 
 ## How install
 
-For the moment the app is still under development and new features will be integrated into it.
+To install it, type the following command:
+
+
+```bash
+$ go install github.com/Dar-rius/GoProject@latest
+```
