@@ -28,4 +28,6 @@ $ gproject go name_project
 ```
 
 
+## How install
+
 For the moment the app is still under development and new features will be integrated into it.
