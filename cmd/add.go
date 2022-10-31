@@ -18,7 +18,7 @@ var addCmd = &cobra.Command{
 			example: gproject add name_project path_project
 			or to add a project with the current path: gproject add .`,
 	Run: func(cmd *cobra.Command, args []string) {
-		//init struct projecto
+		//init struct project
 		var project Project
 
 		if args == nil && args[0] == "" && args[1] == "" || len(args) > 2 {
