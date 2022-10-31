@@ -26,3 +26,6 @@ The go command will allow you to move directly into your project by specifying t
 ```bash
 $ gproject go name_project
 ```
+
+
+For the moment the app is still under development and new features will be integrated into it.
