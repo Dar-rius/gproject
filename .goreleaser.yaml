@@ -9,7 +9,7 @@ before:
 builds:
   - env:
       - CGO_ENABLED=0
-      - export GITHUB_TOKEN="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"
+      export GITHUB_TOKEN= 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
     goos:
       - linux
       - windows
