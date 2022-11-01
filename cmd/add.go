@@ -51,10 +51,21 @@ func addProjectActually(project *Project) {
 
 //the add Project function allows you to search the json file and save the data concerning the project (name and path)
 func addProject(project *Project) {
+	//filEnv := os.Getenv("gproject")
+	filEnv := os.Getenv("gproject")
+	_, errr := os.Open(filEnv + "/path.json")
+	if errr != nil {
+		_, errs := os.Create(filEnv + "/path.json")
+		if errs != nil {
+			panic(errs)
+			os.Exit(0)
+		}
+	}
+
 	vp := viper.New()
 	vp.SetConfigName("path")
 	vp.SetConfigType("json")
-	vp.AddConfigPath(`c:\program files\goproject\`)
+	vp.AddConfigPath(filEnv)
 	err := vp.ReadInConfig()
 	if err != nil {
 		fmt.Println(err)
@@ -66,7 +77,6 @@ func addProject(project *Project) {
 	vp.OnConfigChange(func(in fsnotify.Event) {
 		fmt.Printf("le projet %s ete ajouter", in.Name)
 	})
-
 	vp.WatchConfig()
 }
 
