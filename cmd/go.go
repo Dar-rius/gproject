@@ -28,9 +28,10 @@ var goCmd = &cobra.Command{
 //A function to search for the path of a project in the path.json
 // file and change directory by executing a shell command
 func goPath(project *string) {
+	filEnv := os.Getenv("gproject")
 	viper.SetConfigName("path")
 	viper.SetConfigType("json")
-	viper.AddConfigPath(`C:\Program Files\GoProject\`)
+	viper.AddConfigPath(filEnv)
 
 	err := viper.ReadInConfig()
 	if err != nil {
@@ -51,7 +52,8 @@ func goPath(project *string) {
 	writeBash(&dir)
 
 	//We execute the script contained in the file: script.sh
-	if err := exec.Command("cmd", "/C", "start", `c:\program files\goproject\script.sh`).Run(); err != nil {
+	pathEnv := os.Getenv("gproject")
+	if err := exec.Command("cmd", "/C", "start", pathEnv+`\script.sh`).Run(); err != nil {
 		log.Fatal(err)
 	}
 }
@@ -60,8 +62,9 @@ func goPath(project *string) {
 func writeBash(dir *string) {
 	//the command
 	command := "cd " + *dir + "\n bash \n"
+	pathEnv := os.Getenv("gproject")
 	data := []byte(command)
-	err := ioutil.WriteFile(`c:\program files\goproject\script.sh`, data, 0666)
+	err := ioutil.WriteFile(pathEnv+`\script.sh`, data, 0666)
 	if err != nil {
 		log.Fatal(err)
 	}
