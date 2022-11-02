@@ -1,4 +1,4 @@
-module gproject
+module github.com/Dar_rius/goproject
 
 go 1.18
 
