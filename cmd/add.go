@@ -53,7 +53,7 @@ func addProjectActually(project *Project) {
 func addProject(project *Project) {
 	//the environment variable is stored in a variable in order to create and find the path.json file in the directory where the app is located
 	filEnv := os.Getenv("goproject")
-	_, errr := os.OpenFile(filEnv+"\\path.json", os.O_APPEND|os.O_WRONLY|os.O_CREATE, 0600)
+	_, errr := os.OpenFile(filEnv+"/path.json", os.O_APPEND|os.O_WRONLY|os.O_CREATE, 0600)
 	if errr != nil {
 		panic(errr)
 	}
