@@ -46,15 +46,14 @@ func goPath(project *string) {
 	os.Chdir(path)
 	dir, err := os.Getwd()
 	if err != nil {
-		panic("ca existe pas")
+		panic(err)
 	}
 
 	//We pass the value of the path in the writeBash function
 	writeBash(&dir)
 
 	//We execute the script contained in the file: script.sh
-	pathEnv := os.Getenv("gproject")
-	if err := exec.Command("cmd", "/C", "start", pathEnv+`\script.sh`).Run(); err != nil {
+	if err := exec.Command("cmd", "/C", "start", filEnv+`/script.sh`).Run(); err != nil {
 		log.Fatal(err)
 	}
 }
@@ -63,9 +62,9 @@ func goPath(project *string) {
 func writeBash(dir *string) {
 	//the command
 	command := "cd " + *dir + "\n bash \n"
-	pathEnv := os.Getenv("gproject")
+	pathEnv := os.Getenv("goproject")
 	data := []byte(command)
-	err := ioutil.WriteFile(pathEnv+`\script.sh`, data, 0666)
+	err := ioutil.WriteFile(pathEnv+`/script.sh`, data, 0666)
 	if err != nil {
 		log.Fatal(err)
 	}
