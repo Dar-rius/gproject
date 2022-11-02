@@ -28,6 +28,7 @@ var goCmd = &cobra.Command{
 //A function to search for the path of a project in the path.json
 // file and change directory by executing a shell command
 func goPath(project *string) {
+	//the environment variable is stored in a variable in order to create and find the path.json file in the directory where the app is located
 	filEnv := os.Getenv("gproject")
 	viper.SetConfigName("path")
 	viper.SetConfigType("json")

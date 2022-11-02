@@ -51,7 +51,7 @@ func addProjectActually(project *Project) {
 
 //the add Project function allows you to search the json file and save the data concerning the project (name and path)
 func addProject(project *Project) {
-	//filEnv := os.Getenv("gproject")
+	//the environment variable is stored in a variable in order to create and find the path.json file in the directory where the app is located
 	filEnv := os.Getenv("gproject")
 	_, errr := os.Open(filEnv + "/path.json")
 	if errr != nil {
