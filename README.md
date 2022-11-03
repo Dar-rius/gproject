@@ -33,8 +33,11 @@ $ goproject go name_project
 To install the CLI copy the following command:
 
 ```bash
-$ go install github.com/Dar-rius/GoProject@latest
+$ go install github.com/Dar-rius/goproject@latest
 ```
 
 
-The stable version is not available, if you are under linux or mac os you will probably have errors on the use of the CLI
+Then create an environment variable naming it goproject.
+
+
+The stable version is not available, if you are under linux or mac os you will probably have errors on the use of the CLI.
