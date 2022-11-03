@@ -17,7 +17,7 @@ var goCmd = &cobra.Command{
 	Long: `This command will allow you to move to the repository of a project that you have chosen 
 			example: gproject go projectA`,
 	Run: func(cmd *cobra.Command, args []string) {
-		if args == nil && args[0] == "" || len(args) > 1 {
+		if args == nil && args[0] == "" || len(args) > 1 || len(args) < 1 {
 			log.Fatal("Command error")
 		} else {
 			goPath(&args[0])
@@ -38,12 +38,12 @@ func goPath(project *string) {
 	if err != nil {
 		log.Fatal(err)
 	}
-	path := viper.GetString(*project)
-	if path == "" {
+	pathProject := viper.GetString(*project)
+	if pathProject == "" {
 		log.Fatal("Error, this project is not saved")
 	}
 
-	os.Chdir(path)
+	os.Chdir(pathProject)
 	dir, err := os.Getwd()
 	if err != nil {
 		panic(err)

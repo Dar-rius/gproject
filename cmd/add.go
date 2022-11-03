@@ -21,7 +21,7 @@ var addCmd = &cobra.Command{
 		//init struct project
 		var project Project
 
-		if args == nil && args[0] == "" && args[1] == "" || len(args) > 2 {
+		if args == nil && args[0] == "" && args[1] == "" || len(args) > 2 || len(args) < 2 {
 			log.Fatal("Command error")
 		} else if args[0] != "" && args[1] == "." {
 			project.name = args[0]
@@ -53,27 +53,26 @@ func addProjectActually(project *Project) {
 func addProject(project *Project) {
 	//the environment variable is stored in a variable in order to create and find the path.json file in the directory where the app is located
 	filEnv := os.Getenv("goproject")
-	_, errr := os.OpenFile(filEnv+"/path.json", os.O_APPEND|os.O_WRONLY|os.O_CREATE, 0600)
-	if errr != nil {
-		panic(errr)
+	_, errs := os.OpenFile(filEnv+"/path.json", os.O_APPEND|os.O_WRONLY|os.O_CREATE, 0600)
+	if errs != nil {
+		panic(errs)
 	}
 
-	vp := viper.New()
-	vp.SetConfigName("path")
-	vp.SetConfigType("json")
-	vp.AddConfigPath(filEnv)
-	err := vp.ReadInConfig()
+	viper.SetConfigName("path")
+	viper.SetConfigType("json")
+	viper.AddConfigPath(filEnv)
+	err := viper.ReadInConfig()
 	if err != nil {
 		fmt.Println(err)
 	}
 
-	vp.Set(project.name, project.path)
-	vp.WriteConfig()
+	viper.Set(project.name, project.path)
+	viper.WriteConfig()
 
-	vp.OnConfigChange(func(in fsnotify.Event) {
-		fmt.Printf("le projet %s ete ajouter", in.Name)
+	viper.OnConfigChange(func(in fsnotify.Event) {
+		fmt.Printf("project add")
 	})
-	vp.WatchConfig()
+	viper.WatchConfig()
 }
 
 func init() {
