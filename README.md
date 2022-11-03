@@ -30,7 +30,7 @@ $ goproject go name_project
 
 ## How install
 
-To install the CLI copy the following command:
+You can install the CLI with go by typing the following command:
 
 ```bash
 $ go install github.com/Dar-rius/goproject@latest
