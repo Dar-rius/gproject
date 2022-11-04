@@ -27,10 +27,11 @@ var lsCmd = &cobra.Command{
 		if err != nil {
 			log.Fatal(err)
 		}
+
+		fmt.Println("Number of projects saved: ", len(data))
 		for k, _ := range data {
 			fmt.Println(k)
 		}
-
 	},
 }
 

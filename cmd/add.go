@@ -70,7 +70,7 @@ func addProject(project *Project) {
 	viper.WriteConfig()
 
 	viper.OnConfigChange(func(in fsnotify.Event) {
-		fmt.Printf("project add")
+		fmt.Println("project add")
 	})
 	viper.WatchConfig()
 }
