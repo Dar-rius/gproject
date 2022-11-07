@@ -13,13 +13,13 @@ This CLI has 3 sub commands (add, go and ls)
 The add command allows you to add a project in the application by specifying the name of the project and its path, this will be saved in a json file:
 
 ```bash
-$ goproject add name_project path_project
+$ gproject add name_project path_project
 ```
 
 The ls command allows you to list the projects to store:
 
 ```bash 
-$ goproject ls 
+$ gproject ls 
 ```
 
 The go command will allow you to move directly into your project by specifying the project you want to access:
@@ -34,11 +34,11 @@ $ goproject go name_project
 You can install the CLI with `go` by typing the following command:
 
 ```bash
-$ go install github.com/Dar-rius/goproject@latest
+$ go install github.com/Dar-rius/gproject@latest
 ```
 
 
-Then create an environment variable naming it `goproject`.
+Then create an environment variable naming it `gproject`.
 
 
 The stable version is not available, if you are under linux or mac os you will probably have errors on the use of the CLI.
