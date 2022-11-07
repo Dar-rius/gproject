@@ -25,7 +25,7 @@ $ gproject ls
 The go command will allow you to move directly into your project by specifying the project you want to access:
 
 ```bash
-$ goproject go name_project
+$ gproject go name_project
 ```
 
 
