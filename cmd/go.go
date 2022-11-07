@@ -14,8 +14,7 @@ import (
 var goCmd = &cobra.Command{
 	Use:   "go",
 	Short: "This command will allow you to move to the repository of a project that you have chosen",
-	Long: `This command will allow you to move to the repository of a project that you have chosen 
-			example: gproject go projectA`,
+	Long: `This command will allow you to move to the repository of a project that you have chosen`,
 	Run: func(cmd *cobra.Command, args []string) {
 		if args == nil && args[0] == "" || len(args) > 1 || len(args) < 1 {
 			log.Fatal("Command error")

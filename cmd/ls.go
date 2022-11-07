@@ -12,9 +12,8 @@ import (
 // ls allows you to list all the projects saved in the path.json file
 var lsCmd = &cobra.Command{
 	Use:   "ls",
-	Short: "This command will list all the projects saved in the path.json file",
-	Long: `This command will list all the project saved in the path.json file
-			example: gproject ls`,
+	Short: "This command will list all the projects saved in the path.json file.",
+	Long: `This command will list all the project saved in the path.json file.`,
 	Run: func(cmd *cobra.Command, args []string) {
 		//the environment variable is stored in a variable in order to create and find the path.json file in the directory where the app is located;w
 		filEnv := os.Getenv("goproject")
@@ -37,5 +36,4 @@ var lsCmd = &cobra.Command{
 
 func init() {
 	rootCmd.AddCommand(lsCmd)
-
 }

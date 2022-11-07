@@ -14,9 +14,7 @@ import (
 var addCmd = &cobra.Command{
 	Use:   "add",
 	Short: "This command allows you to add a new project and its path",
-	Long: `This command allows you to add a new project and its path
-			example: gproject add name_project path_project
-			or to add a project with the current path: gproject add .`,
+	Long: `This command allows you to add a new project and its path. `,
 	Run: func(cmd *cobra.Command, args []string) {
 		//init struct project
 		var project Project
