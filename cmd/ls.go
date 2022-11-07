@@ -16,7 +16,7 @@ var lsCmd = &cobra.Command{
 	Long: `This command will list all the project saved in the path.json file.`,
 	Run: func(cmd *cobra.Command, args []string) {
 		//the environment variable is stored in a variable in order to create and find the path.json file in the directory where the app is located;w
-		filEnv := os.Getenv("goproject")
+		filEnv := os.Getenv("gproject")
 		file, err := os.ReadFile(filEnv + "/path.json")
 		if err != nil {
 			log.Fatal("Error, there are no projects saved")
