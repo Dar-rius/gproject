@@ -41,4 +41,4 @@ $ go install github.com/Dar-rius/gproject@latest
 Then create an environment variable naming it `gproject`.
 
 
-The stable version is not available, if you encounter a problem do not hesitate to create an issue.
+The stable version is not available, if you encounter a problem do not hesitate to create an [issue](https://github.com/Dar-rius/gproject/issues).
