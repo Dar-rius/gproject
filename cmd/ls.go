@@ -9,7 +9,7 @@ import (
 	"github.com/spf13/cobra"
 )
 
-// ls allows you to list all the projects saved in the path.json file
+// ls allows to list all the projects saved in the path.json file
 var lsCmd = &cobra.Command{
 	Use:   "ls",
 	Short: "This command will list all the projects saved in the path.json file.",
