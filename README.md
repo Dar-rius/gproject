@@ -3,7 +3,7 @@ Do you sometimes forget where you stored your project ?
 
 
 You search in several folders where you think it might be in and in the end you find it but you have wasted a lot of time and energy to find it, with
-GoProject you can store and access your projects in a command line
+`gproject` you can store and access your projects in a command line
 
 ## How to use 
 
@@ -31,7 +31,7 @@ $ gproject go name_project
 
 ## How install
 
-You can install the CLI with `go` by typing the following command:
+You can install the CLI with [go](https://go.dev/dl/) by typing the following command:
 
 ```bash
 $ go install github.com/Dar-rius/gproject@latest
@@ -41,4 +41,4 @@ $ go install github.com/Dar-rius/gproject@latest
 Then create an environment variable naming it `gproject`.
 
 
-The stable version is not available, if you are under linux or mac os you will probably have errors on the use of the CLI.
+The stable version is not available, if you encounter a problem do not hesitate to create an issue.
