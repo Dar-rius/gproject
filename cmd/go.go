@@ -10,7 +10,7 @@ import (
 	"github.com/spf13/viper"
 )
 
-// go is a command to move to the project of our choice
+// go is a sub-command to move to the project of our choice
 var goCmd = &cobra.Command{
 	Use:   "go",
 	Short: "This command will allow you to move to the repository of a project that you have chosen",
@@ -48,18 +48,15 @@ func goPath(project *string) {
 		panic(err)
 	}
 
-	//We pass the value of the path in the writeBash function
 	writeBash(&dir)
 
-	//We execute the script contained in the file: script.sh
 	if err := exec.Command("cmd", "/C", "start", filEnv+`/script.sh`).Run(); err != nil {
 		log.Fatal(err)
 	}
 }
 
-//The writeBash function allows you to write scripts in the script.sh file to be executed
+//The writeBash function allows to write scripts in the script.sh file to be executed
 func writeBash(dir *string) {
-	//the command
 	command := "cd " + *dir + "\n bash \n"
 	pathEnv := os.Getenv("gproject")
 	data := []byte(command)
