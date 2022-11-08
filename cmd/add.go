@@ -33,12 +33,12 @@ var addCmd = &cobra.Command{
 	},
 }
 
-// a structure with the necessary fields to find a project
+// A structure with the necessary fields to find a project
 type Project struct {
 	name, path string
 }
 
-//a function retrieves the current directory of the project
+//This function retrieves the current directory of the project
 func addProjectActually(project *Project) {
 	dir, err := os.Getwd()
 	if err != nil {
@@ -48,7 +48,7 @@ func addProjectActually(project *Project) {
 	addProject(project)
 }
 
-//the add Project function allows you to search the json file and save the data concerning the project (name and path)
+//The add Project function allows to search the json file and save the data concerning the project (name and path)
 func addProject(project *Project) {
 	//the environment variable is stored in a variable in order to create and find the path.json file in the directory where the app is located
 	filEnv := os.Getenv("gproject")
